@@ -84,6 +84,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+
             elif event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_r:
@@ -99,16 +100,20 @@ def main():
                 if event.key == pygame.K_SPACE:
                     match ALGORITHM:
                         case 0:
+                            sorting = True
                             selectionSort(lst)
                         case 1:
+                            sorting = True
                             bubbleSort(lst)
-        match ALGORITHM:
-            case 0:
-                ALGORITHM_NAME = 'Selection Sort'
-            case 1:
-                ALGORITHM_NAME = 'Bubble Sort'
-            case _:
-                ALGORITHM = 0
+
+            else:
+                match ALGORITHM:
+                    case 0:
+                        ALGORITHM_NAME = 'Selection Sort'
+                    case 1:
+                        ALGORITHM_NAME = 'Bubble Sort'
+                    case _:
+                        ALGORITHM = 0
         drawChart(lst)
         
     pygame.quit()
