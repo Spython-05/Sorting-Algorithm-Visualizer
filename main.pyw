@@ -50,10 +50,10 @@ def selectionSort(chart):
         min_idx = i
         for j in range(i + 1, len_chart):
             if chart[min_idx] > chart[j]:
-                drawChart(chart)
-                time.sleep(0.1)
                 min_idx = j
         chart[i], chart[min_idx] = chart[min_idx], chart[i]
+        drawChart(chart)
+        time.sleep(0.1)
 
 
 def bubbleSort(chart):
@@ -78,13 +78,14 @@ def main():
     clock = pygame.time.Clock()
     lst = generateNumbers()
     global ALGORITHM_NAME, ALGORITHM
+
     while run:
         clock.tick(FPS)
         run = True
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                
+
                 run = False
             elif event.type == pygame.KEYDOWN:
 
@@ -92,11 +93,7 @@ def main():
                     lst = generateNumbers()
 
                 if event.key == pygame.K_m:
-                    match ALGORITHM:
-                        case 0:
-                            ALGORITHM += 1
-                        case 1:
-                            ALGORITHM += 1
+                    ALGORITHM += 1
 
                 if event.key == pygame.K_SPACE:
                     match ALGORITHM:
@@ -113,6 +110,7 @@ def main():
                         ALGORITHM_NAME = 'Bubble Sort'
                     case _:
                         ALGORITHM = 0
+
         drawChart(lst)
         
     pygame.quit()
