@@ -81,10 +81,11 @@ def main():
     while run:
         clock.tick(FPS)
         run = True
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                
                 run = False
-
             elif event.type == pygame.KEYDOWN:
 
                 if event.key == pygame.K_r:
@@ -100,10 +101,8 @@ def main():
                 if event.key == pygame.K_SPACE:
                     match ALGORITHM:
                         case 0:
-                            sorting = True
                             selectionSort(lst)
                         case 1:
-                            sorting = True
                             bubbleSort(lst)
 
             else:
